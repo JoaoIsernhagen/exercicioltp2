@@ -18,6 +18,7 @@ public class Program {
         System.out.println("Calcular gasto semestral com transporte");
         System.out.println("---------------------------------------:");
         System.out.println("");
+        System.out.println("");
 
 
         System.out.println("Seu Nome: ");
