@@ -1,4 +1,4 @@
-package entiitens;
+package entities;
 
 
 public class Produc {

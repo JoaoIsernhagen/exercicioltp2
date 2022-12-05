@@ -1,7 +1,9 @@
 package aplication;
 
-import entiitens.EscolhaVeiculos;
-import entiitens.Produc;
+import entities.EscolhaVeiculos;
+import entities.Produc;
+
+import services.Veiculos;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -23,38 +25,22 @@ public class Program {
 
         do {
 
-            boolean transporteValido = true;
-
-            do {
-                sc.nextLine();
-                System.out.printf("Escolha o veiculo(C - Carro | M - Moto | O - Onibus %n");
-                char veiculo = sc.nextLine().toUpperCase().charAt(0);
-
-                escolhaVeiculos.SelecionarMeioTransporte(veiculo);
-
-                if (Objects.equals(escolhaVeiculos.MeioTransporte, "")) {
-                    System.out.println("Meio de Transporte invalido:");
-                } else {
-                    transporteValido = false;
-                }
+            char veiculo = Veiculos.EscolheVeiculos();
 
 
-            } while (transporteValido);
-
-
-            if (escolhaVeiculos.MeioTransporte == "Onibus") {
+            if (veiculo == 'O') {
 
                 System.out.println("Valor da Parcela Mensal?");
                 produc.parcelaOnibus = sc.nextDouble();
                 System.out.println("Gasto semestral com onibus e " + produc.valorOnibus());
             }
 
-            if (escolhaVeiculos.MeioTransporte == "Onibus") {
+            if (veiculo == 'O') {
                 System.out.println("Dejesa escolher outro veiculo? S para sem | N para nao");
                  opcao2 = sc.nextLine();
                 
             }
-        } while (escolhaVeiculos.opcao != "S" && opcao2 == "S");
+        } while ( opcao2 == "S");
 
 
             boolean combustiveValido = true;
