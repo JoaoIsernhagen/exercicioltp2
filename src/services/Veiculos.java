@@ -1,10 +1,14 @@
 package services;
 
+
 import java.util.Scanner;
 
 public final class Veiculos {
 
     public static final int MESESLETIVOS = 12;
+    public static final int DIASLETIVOS = 100;
+
+    double gasolina;
 
     public static void EscolheVeiculos(Scanner sc)
     {
@@ -62,6 +66,87 @@ public final class Veiculos {
 
     private static void CalculaValoresCarro(Scanner sc)
     {
+        int teste = 0;
+        char combustivel;
+        double gasolina;
+        double alcool;
+        double media;
+        double destino;
+
+
+        do {
+            System.out.println("Selecione o combusteivel do seu veiculo: (G para Gasolina | A para Alcool)");
+            combustivel = sc.nextLine().toUpperCase().charAt(0);
+
+            if (combustivel == 'G') {
+
+                System.out.println("Preço da gasolina?");
+                gasolina = sc.nextDouble();
+                teste++;
+
+                do {
+                    System.out.println("Quantos quilometros por litro de combustivel faz o veiculo?");
+                    media = sc.nextDouble();
+                    if (media > 0) {
+
+                    } else {
+                        System.out.println("Valor Invalido");
+                    }
+                } while (media <= 0);
+
+                do {
+
+                    System.out.println("Quilometros ate o destino?");
+                    destino = sc.nextDouble();
+
+                    if (destino > 0) {
+
+                    } else {
+                        System.out.println("Valor Invalido");
+                    }
+
+                } while (destino <= 0);
+
+               double total = ((destino * 2) / media) * gasolina;
+                System.out.println(total);
+
+
+            } else if (combustivel == 'A') {
+                System.out.println("Preço do alcool?");
+                alcool = sc.nextDouble();
+                teste++;
+
+                do {
+                    System.out.println("Quantos quilometros por litro de combustivel faz o veiculo?");
+                    media = sc.nextDouble();
+
+                    if (media > 0) {
+                        media = media;
+                    } else {
+                        System.out.println("Valor Invalido");
+                    }
+                } while (media <= 0);
+
+                do {
+
+                    System.out.println("Quilometros ate o destino?");
+                    destino = sc.nextDouble();
+
+                    if (destino > 0) {
+
+                    } else {
+                        System.out.println("Valor Invalido");
+                    }
+
+                } while (destino <= 0);
+
+                double total = ((destino * 2) / media) * alcool;
+                System.out.println(total);
+
+            } else {
+                System.out.println("Combustivel invalido:");
+            }
+        } while (teste != 1);
 
     }
 
