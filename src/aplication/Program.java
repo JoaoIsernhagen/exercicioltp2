@@ -1,7 +1,7 @@
 package aplication;
 
 import entities.Produc;
-
+import services.Util;
 import services.Veiculos;
 
 import java.util.Locale;
@@ -10,38 +10,34 @@ import java.util.Scanner;
 public class Program {
     public static void main(String[] args) {
 
+        
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        Produc produc = new Produc();
+        System.out.println(Util.RetornaCabecalho("EXPENSE SIMULATOR!"));
+        System.out.println(Util.LinhaVazia());
 
-        System.out.println("Seu Nome:");
-        produc.name = sc.nextLine();
+        System.out.printf("| Informe seu Nome: ");
+        String nome = sc.nextLine();
 
         char ehFinalizar;
 
         do {
+
             Veiculos.EscolheVeiculos(sc);
 
             sc = new Scanner(System.in);
 
-            System.out.printf("%n%n");
-            System.out.printf("Deseja iniciar outra simulaçã0: (S - Sim | N - Nâo) %n");
+            System.out.printf("| Deseja iniciar outra simulação (S - Sim | N - Nâo): ");
             ehFinalizar = sc.nextLine().toUpperCase().charAt(0);
+
+            System.out.println(Util.LinhaVazia());
+            System.out.println(Util.Linha());
+            if(ehFinalizar == 'S') System.out.println(Util.LinhaVazia());
 
         } while (ehFinalizar == 'S');
 
         sc.close();
-           
-
-            // System.out.println("---------------------------------------:");
-            // System.out.println("            Informações:");
-            // System.out.println("---------------------------------------:");
-            // System.out.println("Aluno: " + produc.name);
-            // System.out.println("Meio de Transporte: " + escolhaVeiculos.MeioTransporte);
-            // System.out.printf("Valor do gasto diario com Combustivel %.2f%n", produc.gastoCombutivelDia());
-            // System.out.printf("Valor do gasto semestral com Combustivel %.2f%n", produc.gastoSemestral());
-
 
     }
 }
